@@ -35,7 +35,7 @@ DB_PASSWORD=estehmanis
 8. `docker-compose exec app php artisan migrate`
 9. `docker-compose exec app php artisan passport:install`
 10. Terdapat 3 container dengan nama yaitu app,webserver,dan db saat menjalankan `sudo docker ps`
-bisa diakses melalui ip adres vm anda, karena docker berjalan di port 80 yaitu http lewat browser
+dan api file storage bisa diakses melalui ip address vm anda, karena docker berjalan di port 80 yaitu http lewat browser
 ## API Documentation
 - Header
   - Content-Type: application/json
