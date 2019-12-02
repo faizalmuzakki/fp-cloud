@@ -40,3 +40,38 @@
 4. Get User LoggedIn Data (/api/auth/user) **GET**
    - Header
      - Authorization: "Bearer {insert token here}"
+
+### File Management
+1. List All Files (/api/file) **GET**
+   - Header
+     - Authorization: "Bearer {insert token here}"
+
+2. Upload File (/api/file) **POST**
+   - Header
+     - Authorization: "Bearer {insert token here}"
+
+   - Body
+     - (file) file
+
+3. Download File (/api/file/download) **POST**
+   - Header
+     - Authorization: "Bearer {insert token here}"
+
+   - Body
+     - (string) filename
+
+4. Update Filename (/api/file) **PUT**
+   - Header
+     - Authorization: "Bearer {insert token here}"
+
+   - Body
+     - (string) filename
+     - (string) name_change_to
+
+
+4. Delete File (/api/file) **DELETE**
+   - Header
+     - Authorization: "Bearer {insert token here}"
+
+   - Body
+     - (string) filename
