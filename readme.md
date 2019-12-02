@@ -15,6 +15,9 @@
 5. `php artisan migrate`
 6. `php artisan passport:install`
 
+### Requirement Installation Deploy dengan docker
+1. Install Docker
+2. Install Docker Compose
 ### Installation deploy dengan docker
 1. Clone dan jalankan command `sudo docker run --rm -v $(pwd):/app composer install` didalam folder fp-cloud
 2. `sudo chown -R $USER:$USER` <- didalam folder fp-cloud dan `cp .env.example .env`
