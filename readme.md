@@ -16,8 +16,8 @@
 6. `php artisan passport:install`
 
 ### Installation deploy dengan docker
-1. Clone 
-2. `cp .env.example .env`
+1. Clone dan jalankan command `sudo docker run --rm -v $(pwd):/app composer install` didalam folder fp-cloud
+2. `sudo chown -R $USER:$USER` <- didalam folder fp-cloud dan `cp .env.example .env`
 3. `sudo docker-compose up -d`
 4. `sudo docker-compose exec app vim .env`
 5. change .env to
@@ -31,8 +31,8 @@ DB_PASSWORD=estehmanis
 7. `docker-compose exec app php artisan config:cache`
 8. `docker-compose exec app php artisan migrate`
 9. `docker-compose exec app php artisan passport:install`
-
-
+10. Terdapat 3 container dengan nama yaitu app,webserver,dan db saat menjalankan `sudo docker ps`
+bisa diakses melalui ip adres vm anda, karena docker berjalan di port 80 yaitu http lewat browser
 ## API Documentation
 - Header
   - Content-Type: application/json
