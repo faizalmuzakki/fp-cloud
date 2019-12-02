@@ -10,9 +10,10 @@
 ### Installation
 1. Clone this project
 2. `composer install`
-3. `php artisan key:generate`
-4. `php artisan migrate`
-5. `php artisan passport:install`
+3. `cp .env.example .env` + check the .env file for your own configuration
+4. `php artisan key:generate`
+5. `php artisan migrate`
+6. `php artisan passport:install`
 
 ## API Documentation
 - Header
