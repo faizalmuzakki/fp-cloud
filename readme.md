@@ -17,9 +17,9 @@
 
 ### Installation deploy dengan docker
 1. Clone 
-2. cp .env.example .env
-3. sudo docker-compose up -d
-4. docker-compose exec app vim .env
+2. `cp .env.example .env`
+3. `sudo docker-compose up -d`
+4. `sudo docker-compose exec app vim .env`
 5. change .env to
 DB_CONNECTION=mysql
 DB_HOST=db
@@ -27,10 +27,10 @@ DB_PORT=3306
 DB_DATABASE=fp-cloud
 DB_USERNAME=root
 DB_PASSWORD=estehmanis
-6. docker-compose exec app php artisan key:generate
-7. docker-compose exec app php artisan config:cache
-8. docker-compose exec app php artisan migrate
-9. docker-compose exec app php artisan passport:install
+6. `docker-compose exec app php artisan key:generate`
+7. `docker-compose exec app php artisan config:cache`
+8. `docker-compose exec app php artisan migrate`
+9. `docker-compose exec app php artisan passport:install`
 
 
 ## API Documentation
