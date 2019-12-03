@@ -39,7 +39,7 @@ class FileController extends Controller
                     $request->file('file')->getClientOriginalName()
                 );
 
-                $sizefile = $request->file('file')->getSize();
+                $sizefile = $this->sizeInMB($request->file('file')->getSize());
                 $storage = StorageModel::where('user_id', $request->user()->id)->first();
 
                 if($this->space_check($storage->used_space + $sizefile, $storage->type))
@@ -49,7 +49,7 @@ class FileController extends Controller
 
                 $create = File::create([
                     'filename' => $request->file('file')->getClientOriginalName(),
-                    'sizemb' => $this->sizeInMB($sizefile),
+                    'sizemb' => $sizefile,
                     'user_id' => $request->user()->id,
                 ]);
             }
