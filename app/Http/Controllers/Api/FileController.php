@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\File;
+use App\Models\Storage as StorageModel;
+use App\Models\StorageType;
 use Storage;
 
 class FileController extends Controller
@@ -21,6 +23,10 @@ class FileController extends Controller
         return $file_size;
     }
 
+    private function space_check($used, $type){
+        return StorageType::types[$type]['spacemb'] < $used;
+    }
+
     public function store(Request $request){
         try {
             $file = $request->user()->files()
@@ -33,9 +39,17 @@ class FileController extends Controller
                     $request->file('file')->getClientOriginalName()
                 );
 
+                $sizefile = $request->file('file')->getSize();
+                $storage = StorageModel::where('user_id', $request->user()->id)->first();
+
+                if($this->space_check($storage->used_space + $sizefile, $storage->type))
+                    return response()->json([
+                        'message' => 'Insufficient space left'
+                    ], 507);
+
                 $create = File::create([
                     'filename' => $request->file('file')->getClientOriginalName(),
-                    'sizemb' => $this->sizeInMB($request->file('file')->getSize()),
+                    'sizemb' => $this->sizeInMB($sizefile),
                     'user_id' => $request->user()->id,
                 ]);
             }
@@ -91,7 +105,7 @@ class FileController extends Controller
 
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'Internal Server Error'
+                'message' => 'File not found'
             ], 500);
         }
 
