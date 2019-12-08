@@ -41,5 +41,8 @@ Route::group([
         Route::put('file', 'FileController@update');
         Route::delete('file', 'FileController@destroy');
         Route::post('file/download', 'FileController@download');
+
+        Route::resource('upgrade', 'UpgradeController')->only(['index']);
+        Route::put('upgrade', 'UpgradeController@update');
     });
 });

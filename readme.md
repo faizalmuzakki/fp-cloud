@@ -18,6 +18,7 @@
 ### Requirement Installation Deploy dengan docker
 1. Install Docker
 2. Install Docker Compose
+
 ### Installation deploy dengan docker
 1. Clone dan jalankan command `sudo docker run --rm -v $(pwd):/app composer install` didalam folder fp-cloud
 2. `sudo chown -R $USER:$USER` <- didalam folder fp-cloud dan `cp .env.example .env`
@@ -36,6 +37,7 @@ DB_PASSWORD=estehmanis
 9. `docker-compose exec app php artisan passport:install`
 10. Terdapat 3 container dengan nama yaitu app,webserver,dan db saat menjalankan `sudo docker ps`
 dan api file storage bisa diakses melalui ip address vm anda, karena docker berjalan di port 80 yaitu http lewat browser
+
 ## API Documentation
 - Header
   - Content-Type: application/json
@@ -97,3 +99,15 @@ dan api file storage bisa diakses melalui ip address vm anda, karena docker berj
 
    - Body
      - (string) filename
+
+### Upgrade Storage
+1. List All Storage Types (/api/upgrade) **GET**
+   - Header
+     - Authorization: "Bearer {insert token here}"
+
+2. Upgrade Storage (/api/upgrade) **PUT**
+   - Header
+     - Authorization: "Bearer {insert token here}"
+
+   - Body
+     - (int) upgrade_to [type_code from list]
