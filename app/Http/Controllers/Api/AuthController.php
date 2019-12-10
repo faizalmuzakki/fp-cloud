@@ -101,6 +101,12 @@ class AuthController extends Controller
      */
     public function user(Request $request)
     {
-        return response()->json($request->user());
+        $data = array(
+            'user' => $request->user(),
+            'storage' => $request->user()->type,
+            'used_space' => $request->user()->storage->used_space,
+        );
+
+        return response()->json($data);
     }
 }

@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
+use App\Models\StorageType;
+
 class User extends Authenticatable
 {
     use Notifiable, HasApiTokens;
@@ -44,5 +46,9 @@ class User extends Authenticatable
 
     public function storage(){
         return $this->hasOne('App\Models\Storage');
+    }
+
+    public function getTypeAttribute(){
+        return StorageType::types[$this->storage->type];
     }
 }
